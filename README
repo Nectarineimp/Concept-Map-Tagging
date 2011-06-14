@@ -1,0 +1,20 @@
+Concept Map Tagging is a set of tools to extract concept maps from files or STDIN and produce output for a variety of uses.
+
+TaggerDesktop.py is a python script used to explore a directory tree of text and output a tab-delimited database of the concept maps found per file. It is suitable for loading into a spreadsheet or a data base. The only argument is the path to the directory. All the files must be rawtext.
+
+StreamTagger.py takes STDIN and produces a tab-delimited list of concepts through STDOUT.
+
+Both of the above have parameters in them that are modifiable.
+
+recordnum = 1 # record numbers will begin with this number, set to other than 1 to append to existing data
+PASSFAIL = 95.0 # Sets cutoff for RSD of file. To process more files, reduce. Minimum is around 25.
+NGRAM_Cutoff = 40 # set to -1 for no cutoff
+BIGRAM_Cutoff = 40 # set to -1 for no cutoff
+UNIGRAM_Cutoff = 40 # set to -1 for no cutoff
+
+# TaggerDesktop only
+POSOUT = False # set to true to see the part of speech tagging instead.
+
+RSD is the relative standard deviation, aka the coefficient of variability, and is used to determine the signal strength of the file. It is used as a pass/fail filter to weed out files that are suitable for tagging. If a file fails to parse it is because it's signal strength was below the RSD. Set this to 0.0 for all files to pass. Adjust up or down depending on the quality of the output. 30.0-75.0 will pass small files. 75.1-94.9 produces borderline results. 95.0 and above are files with rich concept maps.
+
+The Cutoff values determine how many concepts will be displayed of each type. NGRAMs are multiword concepts, BIGRAMS are concepts of two words and UNIGRAMs are single word concepts.
