@@ -186,8 +186,8 @@ def loadSignalPattern():
                             if sent[i].isalnum() != True: #test for potential garbage characters
                                 for j in range(len(sent[i])-1,-1,-1): #scour each token for junk characters
                                     try:
-                                        if "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.!?,;:&@[]{}$%<>\\~'".find(sent[i][j]) == -1:
-                                            sent[i] = sent[i].replace(sent[i][j],'')
+                                        if "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-.!?,;:&@[]{}$%<>\\~'".find(sent[i][j]) == -1:
+                                            sent[i] = sent[i].replace(sent[i][j],' ')
                                     except:
                                         pass
                     except:
